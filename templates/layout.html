@@ -1,0 +1,23 @@
+<!doctype html>
+<title>{% block title%}Teledildonics{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<div class="page">
+  <h1>Teledildonics</h1>
+  <div class="navigation">
+    {% if g.user %}
+      <a href="{{ url_for('orders', user_id=g.user['id']) }}">Orders</a> |
+      <a href="{{ url_for('logout') }}">Log out</a>
+    {% else %}
+    <a href="{{ url_for('register') }}">Sign up</a> |
+    <a href="{{ url_for('login') }}">Log in</a>
+    {% endif %}
+  </div>
+  <div class="header">
+  </div>
+  <div class="body">
+    {% block body %}{% endblock %}
+  </div>
+  <div class="footer">
+    Built with Flask
+  </div>
+</div>
